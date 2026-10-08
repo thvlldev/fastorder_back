@@ -19,6 +19,8 @@ public class Cliente extends Usuario{
     @Enumerated (EnumType.STRING)
     private MetodoPagamento metodo_pagamento;
 
+    
+
 
 
     

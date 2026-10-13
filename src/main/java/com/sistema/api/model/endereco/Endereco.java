@@ -15,6 +15,7 @@ public class Endereco {
 
     @ManyToOne 
     @JoinColumn (name = "usuarioId")
+    @Id 
     private Usuario usuario;
 
     private String logradouro;

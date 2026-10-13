@@ -17,11 +17,13 @@ public class Item_pedido {
 
     
     @ManyToOne
-    @JoinColumn (name = "produtoId") 
+    @JoinColumn (name = "produtoId")
+    @Id 
     private Produto produto;
 
     @ManyToOne
     @JoinColumn (name = "pedidoId")
+    @Id 
     private Pedido pedido;
 
     private int quantidade;

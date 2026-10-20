@@ -30,7 +30,22 @@ public class Usuario {
     private LocalDateTime data_cadastro;
 
 
+    public Usuario(DadosCadastroUsuario dados){
+        this.nome = dados.nome();
+        this.email = dados.email();
+        this.hash_senha = dados.hash_senha();
+        this.tipo_usuario = dados.tipo_usuario();
+        this.data_cadastro = dados.data_cadastro();
+    }
 
+    public void atualizarInfoUsuario(DadosAtualizacaoUsuario dados){
+        if (dados.nome() != null) {
+            this.nome = dados.nome();
+        }
+         if (dados.email() != null) {
+            this.email = dados.email();
+        }
+    }
 
     public void excluirLogico() {
         this.ativo = false;

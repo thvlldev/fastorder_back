@@ -17,9 +17,24 @@ public class Cliente extends Usuario{
     private String telefone;
 
     @Enumerated (EnumType.STRING)
-    private MetodoPagamento metodo_pagamento;
+    private MetodoPagamento metodoPagamento;
 
     
+    public Cliente(DadosCadastroCliente dados) {
+        this.telefone = dados.telefone();
+        this.metodoPagamento = dados.metodoPagamento();
+    }
+
+    public void atualizarInfoCliente(DadosAtualizacaoCliente dados) {
+        if (dados.telefone() != null) {
+            this.telefone = dados.telefone();
+        }
+        if (dados.metodoPagamento() != null) {
+            this.metodoPagamento = dados.metodoPagamento();
+        }
+
+
+    }
 
 
 

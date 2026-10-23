@@ -34,9 +34,20 @@ public class Pedido {
     @Enumerated (EnumType.STRING)
     private Status status;
 
+    public Pedido(DadosCadastroPedido dados,Usuario usuario){
+        this.usuario= usuario;
+        this.numero = dados.numero();
+        this.data = dados.data();
+        this.total = dados.total();
+        this.status =dados.status();
 
+    }
     
-
+    public void atualizarInfoPedido(DadosAtualizacaoPedido dados){
+        if(dados.status() != null){
+            this.status = dados.status();
+        }
+    }
 
 
     public void excluirLogico() {

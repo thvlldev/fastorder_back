@@ -1,4 +1,4 @@
-package com.sistema.api.model.item_pedido;
+package com.sistema.api.model.ItemPedido;
 
 import com.sistema.api.model.pedido.Pedido;
 import com.sistema.api.model.produto.Produto;
@@ -9,11 +9,12 @@ import lombok.*;
 
 @Entity 
 @Table (name = "itens_pedido")
+@IdClass(ItemPedidoId.class)// falar com o professor William
 @Getter 
 @Setter 
 @AllArgsConstructor 
 @NoArgsConstructor 
-public class Item_pedido {
+public class ItemPedido {
 
     
     @ManyToOne
@@ -32,6 +33,12 @@ public class Item_pedido {
 
     private String observacao;
 
-
+    public ItemPedido(DadosCadastroItemPedido dados, Produto produto, Pedido pedido) {
+        this.produto = produto;
+        this.pedido = pedido;
+        this.quantidade = dados.quantidade();
+        this.preco_unitario = dados.preco_unitario();
+        this.observacao = dados.observacao();
+    }
     
 }

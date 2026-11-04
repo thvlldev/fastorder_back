@@ -48,6 +48,7 @@ public class Usuario {
     }
 
     public void excluirLogico() {
+
         this.ativo = false;
     }
 

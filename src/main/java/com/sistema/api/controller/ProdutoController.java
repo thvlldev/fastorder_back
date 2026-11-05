@@ -33,6 +33,9 @@ public class ProdutoController {
         return produtoRepository.findAll();
     }
 
+    // //GET(Ler Produtos Ativos)
+    // @GetMapping("listar-produtos-ativos")
+
     //PUT(Atualizar Produtos)
     @PutMapping("/atualizar-produto")
     @Transactional

@@ -33,6 +33,13 @@ public class UsuarioController {
         return usuarioRepository.findAll();
     }
 
+    // //GET(Ler Usuario por ID)
+    // @GetMapping ("/listar-usuario/{id}")
+    // public void encontrarUsuarioPorId(@PathVariable  Integer id) {
+        
+
+    // }
+
     //PUT(Atualizar Usuarios)
     @PutMapping("/atualizar-usuario")
     @Transactional

@@ -40,6 +40,7 @@ public class ClienteController {
     public List<Cliente> listarClientes() {
         return clienteRepository.findAll();
     }
+    
 
     //PUT(Atualizar Clientes)
     @PutMapping("/atualizar-cliente")

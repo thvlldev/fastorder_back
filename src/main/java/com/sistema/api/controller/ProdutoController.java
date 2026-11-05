@@ -34,7 +34,19 @@ public class ProdutoController {
     }
 
     // //GET(Ler Produtos Ativos)
-    // @GetMapping("listar-produtos-ativos")
+    @GetMapping("listar-produtos-ativos")
+    public List<Produto> listarAtivos() {
+        return produtoRepository.findByAtivoTrue();
+    }
+
+    @GetMapping("/buscar-produto/{id}")
+    public Produto buscarPorID(@PathVariable int id){
+        return produtoRepository.findById(id).orElseThrow();//O .orElseThrow() tira o produto de dentro e, se não tiver, lança um erro.
+    }
+    @GetMapping("/buscar-produto-por-nome")
+    public List<Produto> buscarPorNome(@RequestParam String nome) {//O @RequestParam pega o valor da query string, ao contrário do @PathVariable, que pega da rota.
+        return produtoRepository.findByNomeContainingIgnoreCaseAndAtivoTrue(nome);
+    }
 
     //PUT(Atualizar Produtos)
     @PutMapping("/atualizar-produto")

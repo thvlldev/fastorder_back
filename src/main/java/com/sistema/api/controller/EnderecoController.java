@@ -38,6 +38,11 @@ public class EnderecoController {
         return enderecoRepository.findAll();
     }
 
+    @GetMapping("/listar-enderecos-usuario/{usuarioId}")
+    public List<Endereco> listarPorUsuario(@PathVariable int usuarioId) {
+        return enderecoRepository.findByUsuarioIdAndAtivoTrue(usuarioId);
+    }
+
     //PUT(Atualizar Enderecos)
     @PutMapping("/atualizar-endereco")
     @Transactional

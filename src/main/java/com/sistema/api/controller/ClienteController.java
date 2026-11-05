@@ -3,14 +3,9 @@ package com.sistema.api.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+
+import org.springframework.web.bind.annotation.*;
 
 import com.sistema.api.model.cliente.*;
 
@@ -29,10 +24,13 @@ public class ClienteController {
 
     //POST(Criar Clientes)
 
+    private final BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+
     @PostMapping("/criar-cliente")
     @Transactional
     public void cadastrarCliente(@RequestBody DadosCadastroCliente dados) {
-        clienteRepository.save(new Cliente(dados));
+        var hash = encoder.encode(dados.senha());
+        clienteRepository.save(new Cliente(dados, hash));
     }
 
     //GET(Ler Clientes)
@@ -40,7 +38,12 @@ public class ClienteController {
     public List<Cliente> listarClientes() {
         return clienteRepository.findAll();
     }
-    
+
+    @GetMapping("/buscar-cliente/{id}")
+    public DadosListagemCliente buscarPorId(@PathVariable int id) {
+        var cliente = clienteRepository.findById(id).orElseThrow();
+        return new DadosListagemCliente(cliente.getId(), cliente.getNome(), cliente.getEmail(), cliente.getTelefone(), cliente.getMetodoPagamento());
+    }
 
     //PUT(Atualizar Clientes)
     @PutMapping("/atualizar-cliente")

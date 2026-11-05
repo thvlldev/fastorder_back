@@ -29,14 +29,15 @@ public class UsuarioController {
 
     //GET(Ler Usuarios)
     @GetMapping("/listar-usuarios")
-    public List<Usuario> listarUsuarios() {
-        return usuarioRepository.findAll();
+    public List<DadosListagemUsuario> listarUsuarios() {
+        return usuarioRepository.findAll().stream().map(DadosListagemUsuario::new).toList();
     }
-
     // //GET(Ler Usuario por ID)
-    // @GetMapping ("/listar-usuario/{id}")
-    // public void encontrarUsuarioPorId(@PathVariable  Integer id) {
-        
+    @GetMapping("/buscar-usuario/{id}")
+    public DadosListagemUsuario buscarPorId(@PathVariable int id) {
+        var usuario = usuarioRepository.findById(id).orElseThrow();
+        return new DadosListagemUsuario(usuario);
+    }
 
     // }
 

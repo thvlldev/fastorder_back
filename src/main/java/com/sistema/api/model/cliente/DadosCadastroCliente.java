@@ -1,8 +1,14 @@
 package com.sistema.api.model.cliente;
 
 public record DadosCadastroCliente(
-    String telefone,
-    MetodoPagamento metodoPagamento
+        String nome,
+        String email,
+        String senha,
+        String telefone,
+        MetodoPagamento metodoPagamento
 ) {
-    
+
+
+
+
 }

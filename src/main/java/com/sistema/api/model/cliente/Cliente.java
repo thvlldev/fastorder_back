@@ -9,17 +9,20 @@ import lombok.*;
 import java.time.LocalDateTime;
 
 
-@Entity 
-@Table (name = "clientes")
-@Getter 
-@Setter 
-@AllArgsConstructor 
-@NoArgsConstructor 
+@Entity
+@Table (name = "cliente")
+@PrimaryKeyJoinColumn(name = "usuario_id")
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class Cliente extends Usuario{
 
+    @Column(name = "cliente_telefone")
     private String telefone;
 
     @Enumerated (EnumType.STRING)
+    @Column(name = "cliente_metodo_pagamento")
     private MetodoPagamento metodoPagamento;
 
 
@@ -44,12 +47,4 @@ public class Cliente extends Usuario{
 
     }
 
-
-
-    
-    
-
-
-
-    
 }

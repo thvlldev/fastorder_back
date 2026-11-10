@@ -6,13 +6,13 @@ import java.util.UUID;
 import lombok.*;
 
 
-@Getter 
-@Setter 
-@AllArgsConstructor 
+@Getter
+@Setter
+@AllArgsConstructor
 @NoArgsConstructor
-@EqualsAndHashCode  
+@EqualsAndHashCode
 public class ItemPedidoId implements Serializable{
-    
+
     private UUID pedido;
     private int produto;
 }

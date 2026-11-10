@@ -5,26 +5,34 @@ import com.sistema.api.model.usuario.Usuario;
 import jakarta.persistence.*;
 import lombok.*;
 
-@Entity 
-@Table (name = "enderecos")
-@Getter 
-@Setter 
-@AllArgsConstructor 
-@NoArgsConstructor 
+@Entity
+@Table (name = "endereco_cliente")
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 
 public class Endereco {
 
-    @Id 
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "endereco_cliente_id")
     private int id;
 
-    @ManyToOne 
-    @JoinColumn (name = "usuarioId") 
+    @ManyToOne
+    @JoinColumn (name = "usuario_id")
     private Usuario usuario;
 
+    @Column(name = "endereco_cliente_logradouro")
     private String logradouro;
+
+    @Column(name = "endereco_cliente_numero")
     private String numero;
+
+    @Column(name = "endereco_cliente_complemento")
     private String complemento;
+
+    @Column(name = "endereco_cliente_status")
     private boolean ativo = true;
 
 
@@ -54,5 +62,5 @@ public class Endereco {
     public void excluirLogico() {
         this.ativo = false;
     }
-    
+
 }

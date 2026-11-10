@@ -3,30 +3,41 @@ package com.sistema.api.model.produto;
 import jakarta.persistence.*;
 import lombok.*;
 
-@Entity 
-@Table (name = "produtos")
-@Getter 
-@Setter 
-@AllArgsConstructor 
-@NoArgsConstructor 
+@Entity
+@Table (name = "produto")
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 @EqualsAndHashCode(of = "id")
 public class Produto {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "produto_id")
     private int id;
 
+    @Column(name = "produto_nome")
     private String nome;
+
+    @Column(name = "produto_descricao")
     private String descricao;
+
+    @Column(name = "produto_preco")
     private double preco;
+
+    @Column(name = "produto_imagem")
     private String imagem;
 
     @Enumerated (EnumType.STRING)
+    @Column(name = "produto_status")
     private Status status;
 
     @Enumerated (EnumType.STRING)
+    @Column(name = "produto_categoria")
     private Categoria categoria;
 
+    @Column(name = "produto_ativo")
     private boolean ativo = true;
 
 
@@ -71,5 +82,5 @@ public class Produto {
         this.ativo = false;
     }
 
-    
+
 }

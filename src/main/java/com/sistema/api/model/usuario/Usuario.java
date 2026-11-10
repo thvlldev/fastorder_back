@@ -6,27 +6,37 @@ import jakarta.persistence.*;
 import lombok.*;
 
 @Entity
-@Table(name = "usuarios")
-@Getter 
-@Setter 
-@AllArgsConstructor 
-@NoArgsConstructor 
+@Table(name = "usuario")
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 @EqualsAndHashCode(of = "id")
 @Inheritance(strategy = InheritanceType.JOINED)
 public class Usuario {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "usuario_id")
     private int id;
 
+    @Column(name = "usuario_nome")
     private String nome;
+
+    @Column(name = "usuario_email")
     private String email;
+
+    @Column(name = "usuario_hash_senha")
     private String hash_senha;
 
     @Enumerated(EnumType.STRING)
+    @Column(name = "usuario_tipo_usuario")
     private TipoUsuario tipo_usuario;
 
+    @Column(name = "usuario_ativo")
     private boolean ativo = true;
+
+    @Column(name = "usuario_data_cadastro")
     private LocalDateTime data_cadastro;
 
 

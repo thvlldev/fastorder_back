@@ -7,30 +7,33 @@ import jakarta.persistence.*;
 import lombok.*;
 
 
-@Entity 
+@Entity
 @Table (name = "itens_pedido")
 @IdClass(ItemPedidoId.class)// falar com o professor William
-@Getter 
-@Setter 
-@AllArgsConstructor 
-@NoArgsConstructor 
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class ItemPedido {
 
-    
+
     @ManyToOne
-    @JoinColumn (name = "produtoId")
-    @Id 
+    @JoinColumn (name = "produto_id")
+    @Id
     private Produto produto;
 
     @ManyToOne
-    @JoinColumn (name = "pedidoId")
-    @Id 
+    @JoinColumn (name = "pedido_id")
+    @Id
     private Pedido pedido;
 
+    @Column(name = "itens_pedido_quantidade")
     private int quantidade;
 
+    @Column(name = "itens_pedido_preco_unitario")
     private double preco_unitario;
 
+    @Column(name = "itens_pedido_observacao")
     private String observacao;
 
     public ItemPedido(DadosCadastroItemPedido dados, Produto produto, Pedido pedido) {
@@ -40,5 +43,5 @@ public class ItemPedido {
         this.preco_unitario = dados.preco_unitario();
         this.observacao = dados.observacao();
     }
-    
+
 }

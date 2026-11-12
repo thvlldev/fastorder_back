@@ -3,7 +3,7 @@
 1.0 -- Tela home:
 
 **GET de produtos ativos -> feito ,testado
-**GET de produtos ativos por categoria -> falta fazer
+**GET de produtos ativos por categoria -> ##FEITO E TESTADO
 **GET de produto por nome, pra barra de busca -> adicionado, feito, testado
 **GET de nome do usuario atual -> tirei, é o mesmo GET de usuario por id
 
@@ -24,7 +24,7 @@ O app manda usuarioId, enderecoId, forma de pagamento e a lista de itens com pro
 2.1 -- Login e cadastro:
 
 **POST de cadastro de cliente com hash -> adicionado, feito, testado, em /cliente/criar-cliente
-**POST de login -> adicionado, falta, o código está no anotacoes.md
+**POST de login -> adicionado, Feito Funcionando no Insomnia
 **PUT de alterar senha -> adicionado, falta
 
 2.2 -- Pedidos: confirmação, meus pedidos e acompanhar. Vieram do 2.0:

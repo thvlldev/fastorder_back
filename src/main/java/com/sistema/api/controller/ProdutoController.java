@@ -33,10 +33,18 @@ public class ProdutoController {
         return produtoRepository.findAll();
     }
 
+
+
     // //GET(Ler Produtos Ativos)
     @GetMapping("listar-produtos-ativos")
     public List<Produto> listarAtivos() {
         return produtoRepository.findByAtivoTrue();
+    }
+
+    //GET(Ler Produtos Ativos por Categoria)
+    @GetMapping("listar-produtos-ativos-por-categoria")
+    public List<Produto> listarAtivosPorCategoria(@RequestParam Categoria categoria) {
+        return produtoRepository.findByCategoriaAndAtivoTrue(categoria);
     }
 
     @GetMapping("/buscar-produto/{id}")

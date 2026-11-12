@@ -8,6 +8,8 @@ public interface ProdutoRepository extends JpaRepository<Produto, Integer> {
     List<Produto> findByAtivoTrue();
     List<Produto> findByNomeContainingIgnoreCaseAndAtivoTrue(String nome);
 
+    List<Produto> findByCategoriaAndAtivoTrue(Categoria categoria);
+
 
 
 
